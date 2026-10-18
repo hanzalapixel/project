@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Amazon - SDA E-commerce</title>
+    <link rel="stylesheet" href="css/flip-card.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <h2><i class="fas fa-shopping-bag"></i> MiniAmazon</h2>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-page="home">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+    <a href="#" class="nav-link" data-page="products">Products <i class="fas fa-chevron-down"></i></a>
+    <ul class="dropdown-menu">
+
+        <!-- Mobiles -->
+        <li class="has-submenu">
+            <a href="#" data-category="electronics" data-subcategory="mobiles" data-page="products">
+                <i class="fas fa-mobile-alt"></i> Mobiles
+                <i class="fas fa-chevron-right submenu-arrow"></i>
+            </a>
+            <ul class="sub-dropdown" id="submenu-mobiles"></ul>
+        </li>
+
+        <!-- Laptops -->
+        <li class="has-submenu">
+            <a href="#" data-category="electronics" data-subcategory="laptops" data-page="products">
+                <i class="fas fa-laptop"></i> Laptops
+                <i class="fas fa-chevron-right submenu-arrow"></i>
+            </a>
+            <ul class="sub-dropdown" id="submenu-laptops"></ul>
+        </li>
+
+        <!-- Shirts -->
+        <li class="has-submenu">
+            <a href="#" data-category="clothing" data-subcategory="shirts" data-page="products">
+                <i class="fas fa-tshirt"></i> T-Shirts
+                <i class="fas fa-chevron-right submenu-arrow"></i>
+            </a>
+            <ul class="sub-dropdown" id="submenu-shirts"></ul>
+        </li>
+
+        <!-- Pants -->
+        <li class="has-submenu">
+            <a href="#" data-category="clothing" data-subcategory="pants" data-page="products">
+                <i class="fas fa-male"></i> Pants
+                <i class="fas fa-chevron-right submenu-arrow"></i>
+            </a>
+            <ul class="sub-dropdown" id="submenu-pants"></ul>
+        </li>
+
+    </ul>
+</li>
+</ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-page="cart">
+                    <i class="fas fa-shopping-cart"></i> Cart 
+                    <span class="nav-cart-count" id="cart-count">0</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-page="checkout">Checkout</a>
+            </li>
+        </ul>
+        <!-- NEW: Search bar with live input -->
+        <div class="search-bar" id="searchBar">
+            <input type="text" id="searchInput" placeholder="Search products... (e.g., mobile)">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+
+            <!-- ── AD SLIDER ── -->
+            <div class="ad-slider-wrapper">
+                <div class="ad-slider" id="adSlider">
+
+                    <div class="ad-slide slide-1 active">
+                        <div class="slide-content">
+                            <span class="slide-tag">Welcome to MiniAmazon</span>
+                            <h1>Shop Smarter.<br>Live Better.</h1>
+                            <p>30+ premium products across Electronics & Clothing — all in one place.</p>
+                            <button class="slide-cta" data-page="products">Explore Now →</button>
+                        </div>
+                        <div class="slide-deco">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                    </div>
+
+                    <div class="ad-slide slide-2">
+                        <div class="slide-content">
+                            <span class="slide-tag">🔥 New Arrivals</span>
+                            <h1>Latest Tech.<br>Best Prices.</h1>
+                            <p>iPhones, Laptops, Galaxy — top specs at unbeatable deals. Flash sale live!</p>
+                            <button class="slide-cta" data-page="products" data-category="electronics">Shop Electronics →</button>
+                        </div>
+                        <div class="slide-deco">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="ad-slide slide-3">
+                        <div class="slide-content">
+                            <span class="slide-tag">👕 Fashion Drop</span>
+                            <h1>Dress Bold.<br>Feel Premium.</h1>
+                            <p>Nike, Gucci, Tommy Hilfiger & more — style that speaks for itself.</p>
+                            <button class="slide-cta" data-page="products" data-category="clothing">Shop Fashion →</button>
+                        </div>
+                        <div class="slide-deco">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Dots -->
+                <div class="slider-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                </div>
+
+                <!-- Arrows -->
+                <button class="slider-arrow prev" id="sliderPrev"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-arrow next" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <!-- ── VOUCHER CARDS ── -->
+            <div class="voucher-section">
+                <h3 class="voucher-heading"><i class="fas fa-tags"></i> Exclusive Vouchers</h3>
+                <div class="voucher-grid">
+
+                    <!-- Voucher 1 -->
+                    <div class="voucher-card voucher-silver">
+                        <div class="voucher-left">
+                            <span class="voucher-discount">4% OFF</span>
+                            <span class="voucher-min">on orders above $2,000</span>
+                        </div>
+                        <div class="voucher-divider">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="voucher-right">
+                            <span class="voucher-label">Use Code</span>
+                            <span class="voucher-code" id="vc1">SAVE4NOW</span>
+                            <button class="voucher-copy-btn" onclick="app.copyVoucher('SAVE4NOW', this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Voucher 2 -->
+                    <div class="voucher-card voucher-gold">
+                        <div class="voucher-left">
+                            <span class="voucher-discount">8% OFF</span>
+                            <span class="voucher-min">on orders above $3,500</span>
+                        </div>
+                        <div class="voucher-divider">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="voucher-right">
+                            <span class="voucher-label">Use Code</span>
+                            <span class="voucher-code" id="vc2">MEGA8OFF</span>
+                            <button class="voucher-copy-btn" onclick="app.copyVoucher('MEGA8OFF', this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Products Page -->
+        <section id="products" class="page">
+    <div class="container">
+        <h2 id="productsTitle">Our Products</h2>
+        <!-- NEW: Live search results container -->
+        <div id="search-results-container"></div>
+        <div id="product-grid" class="product-grid"></div>
+    </div>
+</section>
+
+        <!-- Cart Page -->
+        <section id="cart" class="page">
+            <div class="container">
+                <div class="cart-header">
+                    <h2><i class="fas fa-shopping-cart"></i> My Cart</h2>
+                    <span class="cart-badge" id="cart-item-count">0 items</span>
+                </div>
+                <div id="cart-items"></div>
+                <div class="cart-voucher-row">
+                    <div class="voucher-input-group">
+                        <input type="text" id="voucherInput" placeholder="Enter voucher code (e.g. SAVE4NOW)" />
+                        <button id="applyVoucherBtn" onclick="app.applyVoucher()">
+                            <i class="fas fa-tag"></i> Apply
+                        </button>
+                    </div>
+                    <div id="voucher-msg" class="voucher-msg"></div>
+                </div>
+                <div class="cart-footer" id="cart-footer">
+                    <div class="cart-total-box">
+                        <span class="total-label">Total Amount</span>
+                        <span class="total-amount">$<span id="cart-total">0.00</span></span>
+                    </div>
+                    <button id="checkout-btn" class="btn-checkout">
+                        <i class="fas fa-credit-card"></i> Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Page -->
+<section id="checkout" class="page">
+    <div class="container">
+        <h2>Checkout</h2>
+        <div id="order-summary"></div>
+
+        <!-- Payment Method Dropdown -->
+        <div class="payment-section">
+            <div class="payment-method-selector">
+                <label for="paymentMethodSelect">
+                    <i class="fas fa-credit-card"></i> Select Payment Method
+                </label>
+                <select id="paymentMethodSelect" onchange="app.onPaymentMethodChange(this.value)">
+                    <option value="">-- Choose Payment Method --</option>
+                    <option value="easypaisa">EasyPaisa</option>
+                    <option value="jazzcash">JazzCash</option>
+                    <option value="paypal">PayPak</option>
+                    <option value="card">Bank Card</option>
+                </select>
+            </div>
+
+            <!-- Payment Trust Bar -->
+<div class="payment-trust-bar">
+    <div class="trust-method" id="trust-easypaisa" data-method="easypaisa">
+        <img src="images/easypaisa.png" alt="EasyPaisa"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <i class="fas fa-mobile-alt trust-fallback-icon" style="color:#4CAF50;display:none;"></i>
+        <span>EasyPaisa</span>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-method" id="trust-jazzcash" data-method="jazzcash">
+        <img src="images/jazzcash.png" alt="JazzCash"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <i class="fas fa-wallet trust-fallback-icon" style="color:#E91E8C;display:none;"></i>
+        <span>JazzCash</span>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-method" id="trust-paypal" data-method="paypal">
+        <img src="images/paypak.png" alt="PayPak"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <i class="fas fa-credit-card trust-fallback-icon" style="color:#1a237e;display:none;"></i>
+        <span>PayPak</span>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-method" id="trust-card" data-method="card">
+        <img src="images/bankcard.png" alt="Bank Card"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <i class="fas fa-university trust-fallback-icon" style="color:#1565C0;display:none;"></i>
+        <span>Bank Card</span>
+    </div>
+</div>
+            <!-- Dynamic Account Details Box -->
+            <div class="account-details-box" id="accountDetailsBox" style="display:none;">
+                <div class="account-details-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Payment Instructions</span>
+                </div>
+                <p class="account-instruction">Please transfer the total amount to the account details below to complete your order.</p>
+                <div class="account-info-grid">
+                    <div class="account-info-row">
+                        <span class="acc-label">Account Title</span>
+                        <span class="acc-value" id="accTitle">MiniAmazon Store</span>
+                    </div>
+                    <div class="account-info-row">
+                        <span class="acc-label">Account Number</span>
+                        <span class="acc-value" id="accNumber">—</span>
+                    </div>
+                    <div class="account-info-row">
+                        <span class="acc-label">Method</span>
+                        <span class="acc-value" id="accMethod">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screenshot Upload -->
+<div class="upload-proof-box" id="uploadProofBox" style="display:none;">
+    <label class="upload-label" for="paymentProof">
+        <i class="fas fa-upload"></i> Upload Payment Screenshot (Receipt/Proof)
+    </label>
+    <input type="file" id="paymentProof" accept=".jpg,.jpeg,.png"
+        onchange="app.onProofUploaded(this)">
+    <div class="upload-hint">Accepted: JPG, PNG — Must be a payment receipt or transaction screenshot</div>
+
+    <!-- Verification Status -->
+    <div class="verify-status" id="verifyStatus" style="display:none;">
+
+        <!-- Analyzing -->
+        <div class="verify-spinner" id="verifySpinner" style="display:none;">
+            <i class="fas fa-circle-notch fa-spin"></i>
+            <span>Analyzing receipt layout and text...</span>
+        </div>
+
+        <!-- Success -->
+        <div class="verify-success" id="verifySuccess" style="display:none;">
+            <i class="fas fa-check-circle"></i>
+            <span>Receipt Verified Successfully!</span>
+        </div>
+
+        <!-- Failure -->
+        <div class="verify-fail" id="verifyFail" style="display:none;">
+            <i class="fas fa-times-circle"></i>
+            <span>Invalid Document! Please upload a valid payment receipt or transaction screenshot.</span>
+        </div>
+
+    </div>
+</div>
+
+            <!-- Pay Now Button -->
+            <button id="pay-now-btn" class="btn-success btn-disabled" disabled>
+                <i class="fas fa-lock"></i> Pay Now
+            </button>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <script src="js/data/products.js"></script>
+    <script src="js/patterns/Singleton.js"></script>
+    <script src="js/patterns/Factory.js"></script>
+    <script src="js/patterns/Builder.js"></script>
+    <script src="js/patterns/Composite.js"></script>
+    <script src="js/patterns/Adapter.js"></script>
+    <script src="js/patterns/Command.js"></script>
+    <script src="js/app.js"></script>
+
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <i class="fas fa-shopping-bag footer-logo-icon"></i>
+            <span class="footer-brand">MiniAmazon</span>
+        </div>
+        <div class="footer-center">
+            <span class="footer-text">All Rights Reserved</span>
+            <span class="footer-sep">|</span>
+            <span class="footer-text">Privacy Policy</span>
+            <span class="footer-sep">|</span>
+            <span class="footer-text">© 2026 MiniAmazon.com</span>
+        </div>
+        <div class="footer-right">
+            <span class="footer-text">Designed with <i class="fas fa-heart" style="color:#e74c3c;"></i> for Users</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
